@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".25" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin10"
+        android:layout_weight=".5">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/layout_admin"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/margin15"
+                        android:layout_marginRight="@dimen/margin15"
+                        android:layout_weight=".5"
+                        android:background="@color/colorPrimaryDark"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_admin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center"
+                            android:text="Admin"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/textSize18" />
+
+                        <TextView
+                            android:id="@+id/tv_admintic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/grey_color"
+                            android:textSize="@dimen/textSize30" />
+                    </LinearLayout>
+
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/layout_employee"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight=".5"-->
+                    <!--android:background="@color/grey_color"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_employee"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:fontFamily="sans-serif-condensed"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="Employee"-->
+                    <!--android:textColor="@color/black"-->
+                    <!--android:textSize="@dimen/textSize18" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_emptic"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginLeft="@dimen/margin10"-->
+                    <!--android:fontFamily="sans-serif-condensed"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/grey_color"-->
+                    <!--android:textSize="@dimen/textSize30" />-->
+                    <!--</LinearLayout>-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin15"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/id_et_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin40"
+                        android:layout_margin="@dimen/dimen_15_dp"
+                        android:background="@drawable/done_corner_round"
+                        android:drawableLeft="@drawable/ic_phone_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:hint="Phone Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:paddingLeft="@dimen/dimen_10_dp"
+                        android:singleLine="true"
+                        android:textColor="@color/color0E0E0F"
+                        android:textColorHint="@color/color595c63"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/textSize14" />
+
+
+                    <EditText
+                        android:id="@+id/id_et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin40"
+                        android:layout_marginLeft="@dimen/dimen_15_dp"
+                        android:layout_marginRight="@dimen/dimen_15_dp"
+                        android:background="@drawable/done_corner_round"
+                        android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                        android:drawablePadding="@dimen/margin10"
+                        android:fontFamily="sans-serif-condensed"
+                        android:hint="Password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLength="30"
+                        android:paddingLeft="@dimen/dimen_10_dp"
+                        android:singleLine="true"
+                        android:textColor="@color/color0E0E0F"
+                        android:textColorHint="@color/color595c63"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/textSize14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|top"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin15"
+                        android:layout_marginRight="@dimen/margin15"
+                        android:layout_marginTop="@dimen/dimen_10_dp"
+                        android:visibility="visible">
+
+                        <!--<TextView-->
+                        <!--android:id="@+id/forgot_password"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight=".5"-->
+                        <!--android:text="Forgot Password"-->
+                        <!--android:textColor="@color/black"-->
+                        <!--android:textSize="@dimen/textSize14" />-->
+
+                        <CheckBox
+                            android:id="@+id/show_password"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Show Password"
+                            android:textSize="@dimen/textSize14" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/id_bt_login"
+                        android:layout_width="210dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dimen_30_dp"
+                        android:background="@drawable/capsule_button"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="LOGIN"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize14" />
+
+                    <TextView
+                        android:id="@+id/forgot_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin10"
+                        android:text="For Testing Click Login Button! "
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/textSize14" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".25" />
+</LinearLayout>

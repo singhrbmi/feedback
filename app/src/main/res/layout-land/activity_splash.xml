@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".activity.SplashActivity">
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin10"
+        android:layout_weight=".45"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="Welcome"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/margin60"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/splash"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin10"
+        android:layout_weight=".1"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin10"
+        android:layout_weight=".45"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="Good to see you!"
+        android:textColor="@color/selected_tab"
+        android:textSize="@dimen/textSize30"
+        android:textStyle="bold" />
+</LinearLayout>

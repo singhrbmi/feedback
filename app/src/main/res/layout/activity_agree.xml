@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="NOTE..."
+            android:layout_margin="10dp"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:textAllCaps="false"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="To Use the Feedback Application-"
+            android:layout_margin="10dp"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:textAllCaps="false"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:text="1. Click on Three dots at Title bar. For Admin Login."/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:text="4. In Feedback History you can get the previous customers feedback."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:text="5. In Question Management you can ADD/EDIT/DELETE/ACTIVE/DEACTIVE the question."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:text="6. In Question Management you can also swap the question by just holding the qusetion and drag."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:text="7. In Review Management you can check the particular persons review."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:text="8. In SMS Management you can send the SMS to the customers."/>
+
+        <Button
+            android:id="@+id/bt_ok"
+            android:layout_width="@dimen/dimen_120_dp"
+            android:layout_height="@dimen/margin40"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/capsule_button"
+            android:gravity="center"
+            android:text="Ok"
+            android:textAllCaps="false"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+</ScrollView>

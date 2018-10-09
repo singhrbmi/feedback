@@ -28,7 +28,7 @@ public class ThankuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(ThankuActivity.this, LoginActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 ThankuActivity.this.finish();
                 // run AsyncTask here.

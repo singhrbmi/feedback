@@ -1,6 +1,7 @@
 package fusionsoftware.loop.feedback.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -66,10 +69,12 @@ public class QuestionActivity extends AppCompatActivity implements OnStartDragLi
     String questionStr, isActiveStr;
     RadioGroup radio_group;
     ScrollView scrollview;
+    TextView tv_total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_question);
         mEdit_question = findViewById(R.id.edit_question);
         mBtn_update_Add = findViewById(R.id.btn_update_Add);
@@ -78,6 +83,7 @@ public class QuestionActivity extends AppCompatActivity implements OnStartDragLi
         rbtn_Deactivate = findViewById(R.id.btn_Deactivate);
         radio_group = findViewById(R.id.radio_group);
         scrollview = findViewById(R.id.scrollview);
+        tv_total = findViewById(R.id.tv_total);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mQuestionRecycle_View.setLayoutManager(linearLayoutManager);
         resultList = new ArrayList<>();
@@ -97,7 +103,19 @@ public class QuestionActivity extends AppCompatActivity implements OnStartDragLi
             }
         });
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(this, AdminDashboardActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     boolean validation() {
         questionStr = mEdit_question.getText().toString();
         if (questionStr.length() == 0) {
@@ -234,6 +252,7 @@ public class QuestionActivity extends AppCompatActivity implements OnStartDragLi
                                 return Integer.compare(result.getQuestionStatus(), t1.getQuestionStatus());
                             }
                         });
+                        showTotal(resultList);
                         questionUpdateAdapter = new QuestionUpdateAdapter(QuestionActivity.this, resultList, QuestionActivity.this, QuestionActivity.this);
                         mQuestionRecycle_View.setAdapter(questionUpdateAdapter);
                         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback((ItemTouchHelperAdapter) questionUpdateAdapter);
@@ -256,6 +275,21 @@ public class QuestionActivity extends AppCompatActivity implements OnStartDragLi
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    //show total question /active/deactive
+    private void showTotal(List<Result> resultList) {
+        int active = 0, deactive = 0;
+        for (int i = 0; i < resultList.size(); i++) {
+            String activeStatus = resultList.get(i).getIsActive();
+            if (activeStatus.equalsIgnoreCase("yes")) {
+                active++;
+            } else {
+                deactive++;
+            }
+            tv_total.setText("Total:-" + " ("+resultList.size() +")" +"  Active:- (" + active +")"+ "  Deactivate:- (" + deactive+")");
+
+        }
     }
 
 

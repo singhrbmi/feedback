@@ -93,7 +93,7 @@ public class RemarkActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                                 Intent intent = new Intent(RemarkActivity.this, ThankuActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 dbHelper.deleteFeedbackData();
 

@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:name=".framework.AppController"
@@ -26,7 +28,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".activity.LoginActivity"
-            android:label="Customer Feedback" />
+            android:label="Customer Details" />
         <activity
             android:name=".activity.RemarkActivity"
             android:label="Remark" />
@@ -40,7 +42,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.AdminLoginActivity" />
-        <activity android:name=".activity.QuestionActivity" />
+        <activity
+            android:name=".activity.QuestionActivity"
+            android:label="Question Mgmt"></activity>
         <activity android:name=".activity.AdminDashboardActivity" />
         <activity android:name=".activity.WebviewSiteActivity" />
         <activity
@@ -54,7 +58,9 @@
             android:label="Review History" />
         <activity
             android:name=".activity.ReviewDetailsActivity"
-            android:label="Review Details "></activity>
+            android:label="Review Details " />
+        <activity android:name=".activity.SMSActivity"
+            android:label="Send Sms"></activity>
     </application>
 
 </manifest>

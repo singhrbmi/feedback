@@ -1,9 +1,9 @@
 package fusionsoftware.loop.feedback.activity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -11,11 +11,9 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SubscriptionInfo;
@@ -24,7 +22,6 @@ import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -47,7 +44,6 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,10 +67,10 @@ public class AdminLoginActivity extends AppCompatActivity {
     public static List<SubscriptionInfo> subInfoList;
     public static ArrayList<String> Numbers;
     Button id_bt_login;
-    TextView tv_emptic, tv_admintic, tv_employee, tv_admin;
+    TextView tv_admintic, tv_admin;
     EditText id_et_username, id_et_password;
     CheckBox showCheck;
-    LinearLayout layout_employee, layout_admin;
+    LinearLayout layout_admin;
     ProgressDialog pd;
     int role = 1;
     Typeface material;
@@ -84,56 +80,27 @@ public class AdminLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
-
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
-        } else {
-            Numbers = new ArrayList<String>();
-            mSubscriptionManager = SubscriptionManager.from(this);
-            GetCarriorsInformation();
-        }
-
         init();
     }
 
     private void init() {
         material = FontManager.getFontTypefaceMaterialDesignIcons(this, "fonts/materialdesignicons-webfont.otf");
         id_bt_login = findViewById(R.id.id_bt_login);
-//        tv_emptic = findViewById(R.id.tv_emptic);
         tv_admintic = findViewById(R.id.tv_admintic);
-//        tv_employee = findViewById(R.id.tv_employee);
         tv_admin = findViewById(R.id.tv_admin);
-//        forgot_password = findViewById(R.id.forgot_password);
         id_et_username = findViewById(R.id.id_et_username);
         id_et_password = findViewById(R.id.id_et_password);
         showCheck = findViewById(R.id.show_password);
-//        layout_employee = findViewById(R.id.layout_employee);
         layout_admin = findViewById(R.id.layout_admin);
         tv_admintic.setTypeface(material);
-//        tv_emptic.setTypeface(material);
         tv_admintic.setText(Html.fromHtml("&#xf12c;"));
-//        tv_emptic.setText(Html.fromHtml("&#xf12c;"));
         id_bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminLoginActivity.this, AdminDashboardActivity.class));
                 finish();
-//                checkRole();
             }
         });
-//        layout_employee.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                layout_employee.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-//                layout_admin.setBackgroundColor(getResources().getColor(R.color.grey_color));
-//                tv_admintic.setTextColor(getResources().getColor(R.color.grey_color));
-//                tv_employee.setTextColor(getResources().getColor(R.color.white));
-//                tv_emptic.setTextColor(getResources().getColor(R.color.white));
-//                tv_admin.setTextColor(Color.BLACK);
-//                role = 2;
-//            }
-//        });
         layout_admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,33 +125,6 @@ public class AdminLoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case 0:
-                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    GetCarriorsInformation();
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
-    private void GetCarriorsInformation() {
-        subInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
-        if (subInfoList.size() > 1) {
-            isMultiSimEnabled = true;
-        }
-        for (SubscriptionInfo subscriptionInfo : subInfoList) {
-            Numbers.add(subscriptionInfo.getNumber());
-            Toast.makeText(this, "" + subscriptionInfo.getNumber(), Toast.LENGTH_SHORT).show();
-        }
     }
 
 

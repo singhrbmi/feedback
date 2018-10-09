@@ -33,6 +33,7 @@ public class Contants {
     public static final String Admin = "admin.php";
     public static final String uploadFeedback = "uploadFeedback.php";
     public static final String getAllFeedback = "getAllFeedback.php?page=";
+    public static final String getAllFeedbackold = "getAllFeedbackold.php";
     public static final String getAllFeedbackGroup = "getAllFeedbackGroup.php";
     public static final String getAllFeedbackDetails = "getAllFeedbackDetails.php";
     public static final String updateQuestionStatus = "updateQuestionStatus.php";

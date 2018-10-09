@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.inputmethodservice.InputMethodService;
+import android.net.Uri;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ import java.util.Map;
 
 import fusionsoftware.loop.feedback.R;
 import fusionsoftware.loop.feedback.database.DbHelper;
+import fusionsoftware.loop.feedback.framework.IAsyncWorkCompletedCallback;
+import fusionsoftware.loop.feedback.framework.ServiceCaller;
 import fusionsoftware.loop.feedback.model.ContentData;
 import fusionsoftware.loop.feedback.model.Result;
 import fusionsoftware.loop.feedback.myalert.SweetAlertDialog;
@@ -61,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         edt_name = findViewById(R.id.edt_name);
         edt_number = findViewById(R.id.edt_number);
         layout_phone = findViewById(R.id.layout_phone);
+        getAllQuestions();
 //        tv_customerDetails = findViewById(R.id.tv_customerDetails);
         btn_loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         startActivity(intent);
                                                         edt_name.setText("");
                                                         edt_number.setText("");
+                                                        LoginActivity.this.finish();
                                                     }
                                                 }
                                             }
@@ -137,6 +142,18 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void getAllQuestions() {
+        if (Utility.isOnline(this)) {
+            ServiceCaller serviceCaller = new ServiceCaller(this);
+            serviceCaller.callgetQuestionData(new IAsyncWorkCompletedCallback() {
+                @Override
+                public void onDone(String workName, boolean isComplete) {
+
+                }
+            });
+        }
+    }
+
     boolean validation() {
         String phone = edt_number.getText().toString();
         if (phone.length() == 0) {
@@ -168,11 +185,11 @@ public class LoginActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_admin) {
             startActivity(new Intent(LoginActivity.this, AdminLoginActivity.class));
-            finish();
+            LoginActivity.this.finish();
 
         }
         if (id == R.id.action_help) {
-            startActivity(new Intent(LoginActivity.this, WebviewSiteActivity.class));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=fusionsoftware.loop.company")));
 
         }
         return super.onOptionsItemSelected(item);

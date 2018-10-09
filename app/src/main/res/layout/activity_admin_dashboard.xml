@@ -62,16 +62,17 @@
                 android:textSize="@dimen/margin_14dp" />
 
             <Button
-                android:id="@+id/btn_customer"
+                android:id="@+id/btn_sms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_20dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:layout_marginRight="@dimen/margin_20dp"
                 android:background="@drawable/capsule_button"
-                android:text="Customer Details"
+                android:text="SMS Management"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/margin_14dp"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </LinearLayout>
 

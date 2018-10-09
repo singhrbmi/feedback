@@ -12,9 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.android.volley.AuthFailureError;
@@ -24,7 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,11 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 import fusionsoftware.loop.feedback.R;
-import fusionsoftware.loop.feedback.activity.GetAllReviewActivity;
 import fusionsoftware.loop.feedback.activity.QuestionActivity;
-import fusionsoftware.loop.feedback.database.DbHelper;
-import fusionsoftware.loop.feedback.model.ContentData;
-import fusionsoftware.loop.feedback.model.Result;
 import fusionsoftware.loop.feedback.myalert.SweetAlertDialog;
 import fusionsoftware.loop.feedback.swipeable_view.ItemTouchHelperAdapter;
 import fusionsoftware.loop.feedback.swipeable_view.ItemTouchHelperViewHolder;
@@ -44,7 +37,7 @@ import fusionsoftware.loop.feedback.swipeable_view.OnStartDragListener;
 import fusionsoftware.loop.feedback.utility.Contants;
 import fusionsoftware.loop.feedback.utility.Utility;
 
-public class QuestionUpdateAdapter extends RecyclerView.Adapter<QuestionUpdateAdapter.EditClass> implements ItemTouchHelperAdapter {
+public class QuestionUpdateAdapter extends RecyclerView.Adapter<QuestionUpdateAdapter.MyViewHolder> implements ItemTouchHelperAdapter {
     private Context context;
     private List<fusionsoftware.loop.feedback.model.Result> resultList;
     private QuestionActivity questionActivity;
@@ -61,16 +54,16 @@ public class QuestionUpdateAdapter extends RecyclerView.Adapter<QuestionUpdateAd
 
     @NonNull
     @Override
-    public EditClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemQuesView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_ques_view, parent, false);
-        return new EditClass(itemQuesView);
+        return new MyViewHolder(itemQuesView);
     }
 
     @Override
-    public void onBindViewHolder(EditClass holder, final int position) {
-        int p = position + 1;
-        holder.textView.setText("Q." + p + "-" + resultList.get(position).getQuestion());
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+//        int p = position + 1;
+        holder.textView.setText(resultList.get(position).getQuestion());
         String activeStatus = resultList.get(position).getIsActive();
         if (activeStatus.equalsIgnoreCase("yes")) {
             holder.tv_status.setText("\u2713"+" Active");
@@ -178,7 +171,7 @@ public class QuestionUpdateAdapter extends RecyclerView.Adapter<QuestionUpdateAd
     public boolean onItemMove(final int fromPosition, final int toPosition) {
         Collections.swap(resultList, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
-        notifyItemRangeChanged(fromPosition, 2, resultList);
+        notifyItemRangeChanged(fromPosition, 0, resultList);
         notifyItemChanged(toPosition);
 //        Toast.makeText(context, "from"+fromPosition+"to"+toPosition, Toast.LENGTH_SHORT).show();
         if (Utility.isOnline(context)) {
@@ -219,13 +212,13 @@ public class QuestionUpdateAdapter extends RecyclerView.Adapter<QuestionUpdateAd
         notifyItemRemoved(position);
     }
 
-    public class EditClass extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
         TextView textView;
         Button btn_Edit, btn_Delete;
         TextView tv_status;
         CardView linearlayout;
 
-        public EditClass(final View itemView) {
+        public MyViewHolder(final View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.textView);
             btn_Edit = itemView.findViewById(R.id.btn_Edit);

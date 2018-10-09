@@ -62,21 +62,10 @@ public class SplashActivity extends AppCompatActivity {
         Animation bottomAmin = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
 //        tv_welcome.startAnimation(animation);
         tv_bottom.startAnimation(bottomAmin);
-       getAllQuestions();
         moveNext();
     }
 
-    public void getAllQuestions() {
-        if (Utility.isOnline(this)) {
-            ServiceCaller serviceCaller = new ServiceCaller(this);
-            serviceCaller.callgetQuestionData(new IAsyncWorkCompletedCallback() {
-                @Override
-                public void onDone(String workName, boolean isComplete) {
 
-                }
-            });
-        }
-    }
 
 
     private void moveNext() {

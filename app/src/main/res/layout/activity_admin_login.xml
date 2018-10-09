@@ -197,6 +197,14 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSize14" />
 
+                <TextView
+                    android:id="@+id/forgot_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:text="For Testing Click Login Button! "
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSize14" />
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

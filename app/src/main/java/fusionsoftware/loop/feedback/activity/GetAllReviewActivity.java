@@ -2,6 +2,7 @@ package fusionsoftware.loop.feedback.activity;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -42,13 +45,29 @@ public class GetAllReviewActivity extends AppCompatActivity implements RecyclerV
     RecyclerView recyclerView;
     List<Result> resultList;
     private int requestCount = 1;
-//    private ProgressBar progressBar;
+    //    private ProgressBar progressBar;
+    SearchView search_barUser;
+    ReviewAdapter feedbackAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_get_all_review);
         init();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(this, AdminDashboardActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -60,6 +79,23 @@ public class GetAllReviewActivity extends AppCompatActivity implements RecyclerV
         recyclerView.setOnScrollChangeListener(this);
 //        progressBar =findViewById(R.id.progressBar);
         getAllFeedbackData();
+        search_barUser = (SearchView) findViewById(R.id.search_barUser);
+        search_barUser.setIconified(true);
+        search_barUser.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // filter recycler view when query submitted
+                feedbackAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                // filter recycler view when text is changed
+                feedbackAdapter.getFilter().filter(query);
+                return false;
+            }
+        });
     }
 
     private void getAllFeedbackData() {
@@ -67,7 +103,7 @@ public class GetAllReviewActivity extends AppCompatActivity implements RecyclerV
         if (Utility.isOnline(this)) {
 //            progressBar.setVisibility(View.VISIBLE);
 //            setProgressBarIndeterminateVisibility(true);
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, Contants.SERVICE_BASE_URL + Contants.getAllFeedback + String.valueOf(requestCount),
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Contants.SERVICE_BASE_URL + Contants.getAllFeedbackold,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -88,7 +124,7 @@ public class GetAllReviewActivity extends AppCompatActivity implements RecyclerV
                                 shortSharingData(resultList);
                             }
                             //Incrementing the request counter
-                            requestCount++;
+//                            requestCount++;
                         }
                     },
                     new Response.ErrorListener() {
@@ -122,7 +158,7 @@ public class GetAllReviewActivity extends AppCompatActivity implements RecyclerV
         //Ifscrolled at last then
         if (isLastItemDisplaying(recyclerView)) {
             //Calling the method getdata again
-            getAllFeedbackData();
+//            getAllFeedbackData();
         }
     }
 
@@ -145,9 +181,9 @@ public class GetAllReviewActivity extends AppCompatActivity implements RecyclerV
             }
         }
 
-        ReviewAdapter feedbackAdapter = new ReviewAdapter(GetAllReviewActivity.this, newList);
+        feedbackAdapter = new ReviewAdapter(GetAllReviewActivity.this, newList);
         recyclerView.setAdapter(feedbackAdapter);
-        feedbackAdapter.notifyDataSetChanged();
+//        feedbackAdapter.notifyDataSetChanged();
     }
 
     private boolean dayDataExist(List<Result> newList, String id) {

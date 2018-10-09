@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <!--Fourth Layout-->
+        <LinearLayout
+            android:id="@+id/lay_bad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/bad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorRed"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/txt_bad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_6dp"
+                android:gravity="center"
+                android:text="Bad"
+                android:textColor="@color/red"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+        <!--First Layout-->
+        <LinearLayout
+            android:id="@+id/lay_happy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/happy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/txt_happy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_6dp"
+                android:gravity="center"
+                android:text="Happy"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--Second Layout-->
+
+        <LinearLayout
+            android:id="@+id/lay_good"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/good"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/selected_tab"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/txt_good"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_6dp"
+                android:gravity="center"
+                android:text="Good"
+                android:textColor="@color/selected_tab"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <!--Third Layout-->
+        <LinearLayout
+            android:id="@+id/lay_average"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/average"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/txt_average"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_6dp"
+                android:gravity="center"
+                android:text="Awesome"
+                android:textColor="@color/green"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
